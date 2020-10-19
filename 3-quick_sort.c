@@ -6,8 +6,6 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	size_t pos_pivot;
-
 	if (array == NULL || size < 2)
 		return;
 	sort_all_parts(array, size, 0, size - 1);
@@ -48,7 +46,6 @@ size_t sort_partition(int *array, size_t size, size_t min, size_t max)
 	pivot = array[max];
 	j = min;
 	i = min;
-	printf("swap %d\n", pivot);
 	while (j < max)
 	{
 		if (pivot < array[i])
