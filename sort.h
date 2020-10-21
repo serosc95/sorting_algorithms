@@ -27,5 +27,6 @@ void quick_sort(int *array, size_t size);
 void sort_all_parts(int *array, size_t size, size_t min, size_t p_pivot);
 size_t sort_partition(int *array, size_t size, size_t min, size_t p_pivot);
 void shell_sort(int *array, size_t size);
+void counting_sort(int *array, size_t size);
 
 #endif
