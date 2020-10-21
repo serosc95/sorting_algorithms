@@ -12,10 +12,7 @@ void shell_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 	for (i = 0; i < new_size; i = ((i * 3) + 1))
-	{
-		if (i < new_size)
-			range = i;
-	}
+		range = i;
 	while (range >= 1)
 	{
 		for (i = 0; i + range < new_size; i++)
