@@ -5,28 +5,38 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *node, *ref, *aux;
+	listint_t *tmp, *aux;
+	int control = 1;
 
-    if (list == NULL || (*list)->next == NULL)
-        return;
-    
-    node = (*list)->next;
-    while (node)
-    {
-        if (node->n > (node->prev)->n)
-        {
-            ref = node;
-            while (node->n < (node->prev)->n)
-            {
-                aux = node->next;
-                node->next = node->prev;
-                node->prev = (node->prev)->prev;
-                if (!node->prev)
-                    break;
-            }
-            node = ref;
-            printf("%d Hola\n", node->n);
-        }
-        node = node->next;
-    }
+	if (list == NULL || (*list)->next == NULL)
+		return;
+
+	tmp = (*list)->next;
+
+	while (tmp)
+	{
+		control = 1;
+		if (tmp->n < tmp->prev->n)
+		{
+			aux = tmp;
+			control = 0;
+			tmp = tmp->next;
+			while (aux->prev != NULL && aux->n < aux->prev->n)
+			{
+				(aux->prev)->next = aux->next;
+				if (aux->next != NULL)
+					aux->next->prev = aux->prev;
+				aux->next = aux->prev;
+				aux->prev = aux->next->prev;
+				if (aux->prev != NULL)
+					aux->prev->next = aux;
+				aux->next->prev = aux;
+				if (aux->prev == NULL)
+					*list = aux;
+				print_list(*list);
+			}
+		}
+		if (control)
+			tmp = tmp->next;
+	}
 }
